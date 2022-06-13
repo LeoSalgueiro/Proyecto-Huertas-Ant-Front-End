@@ -1,7 +1,9 @@
 import React from 'react'
 
-import { List, Avatar } from 'antd';
+import { List, Avatar, Button } from 'antd';
 import nodoService from '../../servicios/informacionDeNodoService'
+import { render } from '@testing-library/react';
+import Perfil from '../contenido/Perfil'
 
 
 const listData = [];
@@ -21,7 +23,8 @@ for (let i = 0; i < 5; i++) {
 const imagenes = {
   mega: 'https://www.nova.com.bo/37-large_default/arduino-mega-2560-r3.jpg',
   uno: 'https://www.brunoloyola.com.br/wp-content/uploads/2018/10/ARDUINO_UNO_DIP_01.png',
-  avatar: 'https://e7.pngegg.com/pngimages/112/156/png-clipart-kodi-user-profile-android-tv-installation-add-on-random-icons-miscellaneous-television.png'
+  avatar: 'https://e7.pngegg.com/pngimages/112/156/png-clipart-kodi-user-profile-android-tv-installation-add-on-random-icons-miscellaneous-television.png',
+  wemos: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN8lfxWlkLzZ1Ck1r9Xq9qlVp0vlltb03PTA&usqp=CAU'
 }
 export default class ListaNodos extends React.Component{
 
@@ -34,13 +37,20 @@ export default class ListaNodos extends React.Component{
     this.state = {
       error:null,
       isLoaded:false,
-      items:[]
+      items:[],
+      
 
     };
+
+    
   }
 
+
+  
+  
+ 
   componentDidMount(){
-    nodoService.getAllNodos({email:'dismoi.leo@gmail.com'})
+    nodoService.getConfigNodos({email:this.props.email})
     .then(res => res)
     .then((result) => {
       console.log('entro al result de la lista')
@@ -77,31 +87,28 @@ export default class ListaNodos extends React.Component{
             pageSize: 3,
           }}
           dataSource={items}
-          footer={
-            <div>
-              <b>Paginado: </b> Ya veré que haré acá
-      </div>
-          }
+        
           renderItem={item => (
 
             <List.Item
+              
               key={item.nombre}
               extra={
                 <img
                   width={272}
                   alt="logo"
-                  src={(item.tipo==='Arduino Uno')?imagenes.uno : imagenes.mega}
+                  src={(item.tipo==='Wemos D1')?imagenes.wemos : imagenes.uno}
                 />
               }
 
             >
               <List.Item.Meta
                 avatar={<Avatar src={imagenes.avatar} />}
-                title={<a href={item.href}>{item.nombre}</a>}
+                title={<p>Nombre: {item.nombre}</p>}
                 description={item.tipo}
               />
               {item.descripcion}
-
+             
             </List.Item>
 
 
