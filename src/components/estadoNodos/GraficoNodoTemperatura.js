@@ -41,18 +41,37 @@ export const GraficoNodoTemperatura = (props) => {
     padding: 'auto',
     xField: 'Fecha',
     yField: 'Temperatura',
+    min:10,
+    max:50,
     annotations: [
       // 低于中位数颜色变化 alguna cosa en chino
+      //para maximo
       {
         type: 'regionFilter',
-        start: ['min', 'median'],
+        start: ['min', 28],
+        end: ['max', 60],
+        color: '#d60404',
+        
+      },
+      {
+        type: 'line',
+        start: ['min', 28],
+        end: ['max', 28],
+        style: {
+          stroke: '#f44a4a',
+          lineDash: [2, 2],
+        }
+      },
+      {
+        type: 'regionFilter',
+        start: ['min', 18],
         end: ['max', '0'],
         color: '#d60404',
         
       },
       {
         type: 'text',
-        position: ['min', 'median'],
+        position: ['min', 18],
         content: 'Alerta de temperatura baja',
         offsetY: -4,
         style: {
@@ -61,8 +80,8 @@ export const GraficoNodoTemperatura = (props) => {
       },
       {
         type: 'line',
-        start: ['min', 'median'],
-        end: ['max', 'median'],
+        start: ['min', 18],
+        end: ['max', 18],
         style: {
           stroke: '#f44a4a',
           lineDash: [2, 2],

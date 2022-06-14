@@ -45,9 +45,29 @@ export const GraficoNodoHumedadAmbiente = (props) => {
     yField: 'Humedad',
     annotations: [
       // 低于中位数颜色变化 alguna cosa en chino
+      //para maximo
       {
         type: 'regionFilter',
-        start: ['min', 'median'],
+        start: ['min', 80],
+        end: ['max', 200],
+        color: '#d60404',
+        
+      },
+      {
+        type: 'line',
+        start: ['min', 80],
+        end: ['max', 80],
+        style: {
+          stroke: '#f44a4a',
+          lineDash: [2, 2],
+          
+        },
+      },
+
+      //par minimo
+      {
+        type: 'regionFilter',
+        start: ['min', 60],
         end: ['max', '0'],
         color: '#d60404',
         
@@ -63,8 +83,8 @@ export const GraficoNodoHumedadAmbiente = (props) => {
       },
       {
         type: 'line',
-        start: ['min', 'median'],
-        end: ['max', 'median'],
+        start: ['min', 60],
+        end: ['max', 60],
         style: {
           stroke: '#f44a4a',
           lineDash: [2, 2],

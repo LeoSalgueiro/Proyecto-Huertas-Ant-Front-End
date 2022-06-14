@@ -21,7 +21,9 @@ import {
   SmileOutlined,
   PlusCircleOutlined,
   RobotOutlined,
-  HomeOutlined
+  HomeOutlined,
+  CloudOutlined,
+  NodeIndexOutlined
 } from '@ant-design/icons';
 
 import ReactWeather, { useOpenWeather } from 'react-open-weather'
@@ -56,7 +58,7 @@ export default class SiderDemo extends React.Component {
 
 
   state = {
-    collapsed: false,
+    collapsed: true,
     key: '1'
   };
 
@@ -107,7 +109,7 @@ export default class SiderDemo extends React.Component {
             }}
             description={
               <span>
-                Pagina En Contrucción
+                Pagina En Construcción
             </span>
             } />
         </div>
@@ -146,15 +148,21 @@ export default class SiderDemo extends React.Component {
             <div className="logo" />
             <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" onClick={this.onClickEstado}>
 
-              <Menu.Item key="def" icon={<HomeOutlined />} title="Inicio">
-                Inicio
-              </Menu.Item>
-              <SubMenu key="sub1" icon={<UserOutlined />} title="Usuario">
+              <Menu.Item key="def" icon={<HomeOutlined />} title="Inicio">Inicio</Menu.Item>
+              
+              <SubMenu key="sub1" icon={<NodeIndexOutlined />} title="Nodos">
                 <Menu.Item key="1" icon={<OrderedListOutlined />}  >Lista de Nodos</Menu.Item>
                 <Menu.Item key="2" icon={<DashboardOutlined />} >Estado de Nodos</Menu.Item>
+              </SubMenu>
+              <SubMenu key="sub2" icon={<CloudOutlined/>} title="Tiempo">
+                <Menu.Item key="Tiempo" icon={<CloudOutlined/>} title="hoy">Tiempo hoy</Menu.Item>
+              </SubMenu>
+
+              <SubMenu key="sub3" icon={<UserOutlined />} title="Usuario">
                 <Menu.Item key="3" icon={<SmileOutlined />}>Perfil</Menu.Item>
               </SubMenu>
-              <SubMenu key="sub2" icon={<SettingOutlined />} title="Configuración del sistema">
+              
+              <SubMenu key="sub4" icon={<SettingOutlined />} title="Configuración del sistema">
                 <Menu.Item key="4" icon={<PlusCircleOutlined />}>Registrar Nuevo Nodo</Menu.Item>
                 <Menu.Item key="5" icon={<RobotOutlined />}>Configuración general</Menu.Item>
               </SubMenu>
@@ -171,7 +179,7 @@ export default class SiderDemo extends React.Component {
                 {variable}
               </div>
             </Content>
-            <Footer style={{ textAlign: 'center' }}>Control Remoto de Huertas ©2020 Created by LeNa UNAJ</Footer>
+            <Footer style={{ textAlign: 'center' }}>Control Remoto de Huertas ©2022 Created by LeNa UNAJ</Footer>
           </Layout>
         </Layout>
         

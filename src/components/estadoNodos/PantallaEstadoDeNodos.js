@@ -5,7 +5,7 @@ import { GraficoNodoHumedadSuelo } from "../estadoNodos/GraficoNodoHumedadSuelo"
 import { GraficoNodoTemperatura } from "../estadoNodos/GraficoNodoTemperatura";
 import informacionDeNodoService from "../../servicios/informacionDeNodoService";
 
-import { Select } from "antd";
+import { Select, Alert } from "antd";
 const {Option} = Select;
 
 export const PantallaEstadodENodos = (props) => { 
@@ -62,7 +62,17 @@ export const PantallaEstadodENodos = (props) => {
 
     return(
         <div>
-            <label>
+            <Alert
+                message="Información"
+                description="Seleccione el nodo que desea ver y a continuacion seleccione su respectivo sensor"
+                type="info"
+                closeText="Cerrar"
+                showIcon
+            />
+            <div style={{border:3,float:'left', marginRight:'2%', marginTop:'2%'}}>
+
+            
+           
                 < Select
 
                     style={{ width: 170 }}
@@ -78,9 +88,10 @@ export const PantallaEstadodENodos = (props) => {
                     ))}
 
                 </Select >
-            </label>
-            <div>
-            <label>
+            
+            </div>
+            <div style={{ marginLeft:'2%', marginTop:'2%'}}>
+            
                 < Select
 
                     style={{ width: 170 }}
@@ -96,11 +107,11 @@ export const PantallaEstadodENodos = (props) => {
                     ))}
 
                 </Select >
-            </label>
+            
 
             
             </div>
-            <div>
+            <div style={{marginTop:'5%'}}>
                 {sensorSeleccionado}
             </div>
         </div>

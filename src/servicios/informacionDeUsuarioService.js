@@ -70,6 +70,7 @@ export default {
     .then((res) =>{
       if(handleResponse(res)!=res.error){ console.log('este es el user final: '+res.data.access_token)}
       localStorage.setItem('user', JSON.stringify({access_token:res.data.access_token}));
+      
       sessionStorage.setItem('email', email);
             return res.data || [];
     })

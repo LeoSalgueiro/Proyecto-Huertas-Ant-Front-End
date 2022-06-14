@@ -59,9 +59,28 @@ export const GraficoNodoHumedadSuelo = (props) => {
     max:2000,
     annotations: [
       // 低于中位数颜色变化 alguna cosa en chino
+      //region para maximo
       {
         type: 'regionFilter',
-        start: ['min', 'median'],
+        start: ['min', 600],
+        end: ['max', 1300],
+        color: '#d60404',
+        
+      },
+      {
+        type: 'line',
+        start: ['min', 600],
+        end: ['max', 600],
+        style: {
+          stroke: '#f44a4a',
+          lineDash: [2, 2],
+          
+        },
+      },
+      //region para minimo
+      {
+        type: 'regionFilter',
+        start: ['min', 300],
         end: ['max', '0'],
         color: '#d60404',
         
@@ -77,8 +96,8 @@ export const GraficoNodoHumedadSuelo = (props) => {
       },
       {
         type: 'line',
-        start: ['min', 'median'],
-        end: ['max', 'median'],
+        start: ['min', 300],
+        end: ['max', 300],
         style: {
           stroke: '#f44a4a',
           lineDash: [2, 2],

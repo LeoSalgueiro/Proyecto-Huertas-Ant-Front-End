@@ -11,7 +11,8 @@ const columnas = [
         title:'Nombre',
         dataIndex:'nombre',
         key:'nombre',
-        align:'center'
+        align:'center',
+        
     },
     {
         title:'Temperatura Ambiente',
@@ -176,13 +177,14 @@ export function PantallaPrincipal  (props) {
                
                 <Divider plain>Estado actual de nodos</Divider>
                 <p>{crearData}</p>
-                <Card style={{height:'50vh', boxShadow:"1px 2px 2px 2px rgba(184, 184, 184, 0.6)", borderRadius:'4px' }}>
-                    <GridEstadosActuales data={datosActuales}></GridEstadosActuales>
-                    <Table columns={columnas} dataSource={data} direction="horizontal" pagination={false} style={{alignItems:'center',textAlign:'center', justifyContent:'center'}}></Table>
-                    <Divider></Divider>
-                    <Table columns={columnaParametros} dataSource={parametros} pagination={false} style={{textAlign:'center'}}></Table>
-                </Card>
-                
+                <div style={{height: '100%', width:'100%'}}>
+                    <Card style={{ boxShadow: "1px 2px 2px 2px rgba(184, 184, 184, 0.6)", borderRadius: '4px' }}>
+                        <GridEstadosActuales data={datosActuales}></GridEstadosActuales>
+                        <Table expandable={true} columns={columnas} dataSource={data} tableLayout={"fixed"}  pagination={false} ></Table>
+                        <Divider></Divider>
+                        <Table columns={columnaParametros} dataSource={parametros} tableLayout={"fixed"} pagination={false} ></Table>
+                    </Card>
+                </div>
             </div>
             <div style={{float: 'left', width:'50%', padding:'3%'}}>
                 <Divider plain>Temporal actual</Divider>
