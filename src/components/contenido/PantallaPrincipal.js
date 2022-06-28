@@ -3,7 +3,7 @@ import { WeatherBit } from '../weather/WeatherBit'
 import Card from "antd/lib/card/Card"
 import { Divider, Alert, Table } from 'antd';
 import NodoService from '../../servicios/informacionDeNodoService'
-import { GridEstadosActuales } from "../gridEstadosActuales/GridEstadosActuales";
+
 
 
 const columnas = [
@@ -178,8 +178,7 @@ export function PantallaPrincipal  (props) {
                 <Divider plain>Estado actual de nodos</Divider>
                 <p>{crearData}</p>
                 <div style={{height: '100%', width:'100%'}}>
-                    <Card style={{ boxShadow: "1px 2px 2px 2px rgba(184, 184, 184, 0.6)", borderRadius: '4px' }}>
-                        <GridEstadosActuales data={datosActuales}></GridEstadosActuales>
+                    <Card style={{ boxShadow: "1px 2px 2px 2px rgba(184, 184, 184, 0.6)", borderRadius: '4px', height:'51vh' }}>
                         <Table expandable={true} columns={columnas} dataSource={data} tableLayout={"fixed"}  pagination={false} ></Table>
                         <Divider></Divider>
                         <Table columns={columnaParametros} dataSource={parametros} tableLayout={"fixed"} pagination={false} ></Table>
